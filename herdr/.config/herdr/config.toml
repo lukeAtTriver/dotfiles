@@ -1,0 +1,43 @@
+onboarding = false
+[ui]
+agent_panel_sort = "priority"
+# Always-visible reminder in the top-right of the tab bar.
+tab_bar_right = [
+  { type = "text", text = "^b i cheatsheet · ^b ? all keys" },
+]
+
+# --- Project explorer & diff popups ---------------------------------------
+# Each popup cds to the focused pane's git repo root (falls back to its cwd).
+# Close the popup by quitting the tool (fresh: ctrl+q, critique: q).
+
+[[keys.command]]
+key = "prefix+f"
+type = "popup"
+description = "explore project in fresh"
+command = 'export PATH="$HOME/.bun/bin:/opt/homebrew/bin:$PATH"; cd "${HERDR_ACTIVE_PANE_CWD:-$PWD}" && cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)" && exec fresh'
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+d"
+type = "popup"
+description = "diff: uncommitted changes (critique)"
+command = 'export PATH="$HOME/.bun/bin:/opt/homebrew/bin:$PATH"; cd "${HERDR_ACTIVE_PANE_CWD:-$PWD}" && cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)" && exec critique'
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+alt+d"
+type = "popup"
+description = "diff: branch vs main (critique)"
+command = 'export PATH="$HOME/.bun/bin:/opt/homebrew/bin:$PATH"; cd "${HERDR_ACTIVE_PANE_CWD:-$PWD}" && cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)" && exec critique "$(git merge-base HEAD origin/main 2>/dev/null || git merge-base HEAD main)" HEAD'
+width = "90%"
+height = "90%"
+
+[[keys.command]]
+key = "prefix+i"
+type = "popup"
+description = "my cheatsheet"
+command = 'exec less -R -~ "$HOME/.config/herdr/cheatsheet.txt"'
+width = 70
+height = 38

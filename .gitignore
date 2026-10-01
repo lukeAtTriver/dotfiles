@@ -1,0 +1,5 @@
+.DS_Store
+
+# Fresh: files it generates itself (type defs for plugin authoring)
+fresh/.config/fresh/types/
+fresh/.config/fresh/tsconfig.json

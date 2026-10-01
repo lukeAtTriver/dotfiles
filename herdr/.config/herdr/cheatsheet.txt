@@ -1,0 +1,32 @@
+  HERDR CHEATSHEET          press ctrl+b, let go, then the key
+  ─────────────────────────────────────────────────────────────
+
+  MY TOOLS
+    f        explore project in Fresh        (quit: ctrl+q)
+    d        diff uncommitted changes        (quit: q)
+    alt+d    diff this branch vs main        (quit: q)
+
+  PANES  (a pane = one terminal)
+    v        split right
+    minus    split down
+    h j k l  move left / down / up / right
+    z        zoom pane to full screen (again to restore)
+    x        close pane
+
+  TABS
+    c        new tab
+    n / p    next / previous tab
+    1..9     jump to tab
+
+  WORKSPACES  (one per project)
+    w        pick a workspace
+    shift+n  new workspace
+
+  GENERAL
+    q        detach (everything keeps running; `herdr` to return)
+    ?        every keybinding
+    i        this cheatsheet
+
+  The mouse works too: click to focus, right-click for menus.
+
+  Press q to close.
