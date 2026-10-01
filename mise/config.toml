@@ -1,0 +1,58 @@
+# Global mise config — linked to ~/.config/mise/config.toml.
+# `mise bootstrap` applies everything here: packages, dotfiles, tools.
+
+[settings]
+experimental = true
+dotfiles.root = "~/dotfiles"
+dotfiles.relative_symlinks = true
+
+# --- Dotfiles: repo file -> where it lives on this machine ------------------
+[dotfiles]
+"~/.config/mise/config.toml" = "~/dotfiles/mise/config.toml"
+"~/.config/herdr/config.toml" = "~/dotfiles/herdr/config.toml"
+"~/.config/herdr/cheatsheet.txt" = "~/dotfiles/herdr/cheatsheet.txt"
+"~/.config/fresh" = "~/dotfiles/fresh"
+
+# --- Homebrew formulae & casks (installed by mise, no `brew` needed) ---------
+[bootstrap.packages]
+# terminal & editor
+"brew:herdr" = "latest"
+"brew:fresh-editor" = "latest"
+"brew-cask:ghostty" = "latest"
+# git & github
+"brew:gh" = "latest"
+"brew:git-lfs" = "latest"
+"brew:jq" = "latest"
+# languages (still via brew for now; move to [tools] later if wanted)
+"brew:node" = "latest"
+"brew:python@3.12" = "latest"
+"brew:uv" = "latest"
+"brew:pnpm" = "latest"
+# cloud & infra
+"brew:awscli" = "latest"
+"brew-cask:session-manager-plugin" = "latest"
+"brew:hashicorp/tap/terraform" = "latest"
+"brew:tfenv" = "latest"
+"brew:cloudflare-wrangler" = "latest"
+"brew:colima" = "latest"
+"brew:docker" = "latest"
+"brew:docker-compose" = "latest"
+# work tools
+"brew:auth0/auth0-cli/auth0" = "latest"
+"brew:snowflake-cli" = "latest"
+"brew:unixodbc" = "latest"
+"brew:bruno-cli" = "latest"
+"brew-cask:bruno" = "latest"
+# okta: tap needs Ruby to evaluate — install manually: brew install --cask oktadev/tap/okta
+"brew-cask:1password-cli" = "latest"
+# misc apps
+"brew-cask:claude-code" = "latest"
+"brew-cask:keycastr" = "latest"
+
+# --- Versioned tools ---------------------------------------------------------
+[tools]
+bun = "latest"
+
+# Runs at the end of every `mise bootstrap` — keep it safe to repeat.
+[tasks.bootstrap]
+run = "bun install -g critique"
